@@ -1,7 +1,7 @@
 # NFT-Staking
 
 
-The NFT staking protocol for the [Afristore Marketplace](https://github.com/Afristore/marketplace) — extracted from the monorepo into its own dedicated repository.
+The NFT staking protocol for the [Afristore Marketplace](https://github.com/Afristore/marketplace) 
 
 This Soroban smart contract implements:
 - `stake` — Lock an NFT into the staking contract to begin earning rewards
@@ -13,7 +13,7 @@ This Soroban smart contract implements:
 
 ---
 
-## 🚀 Getting Started (once code is populated)
+## Getting Started 
 
 ```bash
 # Build the contract WASM
@@ -35,7 +35,7 @@ stellar contract deploy --wasm target/wasm32-unknown-unknown/release/nft_staking
 
 ---
 
-## 🔧 Prerequisites
+## Prerequisites
 
 - Rust (stable)
 - `wasm32-unknown-unknown` target: `rustup target add wasm32-unknown-unknown`
@@ -43,21 +43,13 @@ stellar contract deploy --wasm target/wasm32-unknown-unknown/release/nft_staking
 
 ---
 
-## 🔐 Security
+## Security
 
 All state-changing functions (`stake`, `unstake`, `claim_rewards`) require caller authorization via `require_auth`. Non-authorized calls will panic.
 
 ---
 
-## 📋 Source Location (Monorepo)
-
-This repository is being extracted from [`afristore/contracts/nft-staking/`](https://github.com/Afristore/marketplace/tree/master/contracts/nft-staking) in the main monorepo.
-
-**Tracked in:** [ui-ux-issues.md — Issue 124](https://github.com/Afristore/marketplace/blob/master/ui-ux-issues.md)
-
----
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork this repository
 2. Create a feature branch: `git checkout -b feat/your-feature`
