@@ -1,6 +1,5 @@
 # NFT-Staking
 
-> **🟡 Priority:** Medium | **Difficulty:** Low–Medium | **Estimated Effort:** 1–2 days
 
 The NFT staking protocol for the [Afristore Marketplace](https://github.com/Afristore/marketplace) — extracted from the monorepo into its own dedicated repository.
 
