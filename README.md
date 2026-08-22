@@ -13,11 +13,25 @@ This Soroban smart contract implements:
 
 ---
 
+## Configuration
+
+The contract is configured during initialization with the following constructor parameters:
+- `admin` (Address): The administrator address with configuration privileges
+- `nft_address` (Address): The address of the NFT collection to accept for staking
+- `reward_token` (Address): The address of the reward token distributed to stakers
+- `reward_rate` (i128): The emission rate (rewards per second) distributed to stakers
+
+Admin functions for configuring the contract:
+- `set_admin` — Transfer administrative privileges to a new address
+- `set_paused` — Pause or unpause staking operations (prevents `stake`, `unstake`, and `claim_rewards` when paused)
+
+---
+
 ## Getting Started 
 
 ```bash
 # Build the contract WASM
-cargo build --target wasm32-unknown-unknown --release
+cargo build --target wasm32v1-none --release
 
 # Run all tests
 cargo test --features testutils
@@ -27,10 +41,10 @@ cargo fmt --check
 cargo clippy -- -D warnings
 
 # Optimize the WASM binary
-stellar contract optimize --wasm target/wasm32-unknown-unknown/release/nft_staking.wasm
+stellar contract optimize --wasm target/wasm32v1-none/release/nft_staking.wasm
 
 # Deploy to testnet
-stellar contract deploy --wasm target/wasm32-unknown-unknown/release/nft_staking.optimized.wasm --network testnet
+stellar contract deploy --wasm target/wasm32v1-none/release/nft_staking.optimized.wasm --network testnet
 ```
 
 ---
@@ -38,7 +52,7 @@ stellar contract deploy --wasm target/wasm32-unknown-unknown/release/nft_staking
 ## Prerequisites
 
 - Rust (stable)
-- `wasm32-unknown-unknown` target: `rustup target add wasm32-unknown-unknown`
+- `wasm32v1-none` target: `rustup target add wasm32v1-none`
 - Stellar CLI: `cargo install --locked stellar-cli`
 
 ---
@@ -57,7 +71,7 @@ All state-changing functions (`stake`, `unstake`, `claim_rewards`) require calle
    - `cargo fmt --check` — must exit 0
    - `cargo clippy -- -D warnings` — zero warnings
    - `cargo test --features testutils` — full staking lifecycle tests must pass (stake → earn → unstake → claim)
-   - `cargo build --target wasm32-unknown-unknown --release` — must produce a valid WASM
+   - `cargo build --target wasm32v1-none --release` — must produce a valid WASM
 4. Open a PR — **all CI must pass before a PR is eligible for review and merge**
 
 ---
